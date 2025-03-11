@@ -1,0 +1,38 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background: #333;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+
+.headerTitle {
+  font-size: 1.5em;
+  font-style: italic;
+  margin-right: 10px;
+}
+
+.headerItem {
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.headerItem:hover {
+  color: cyan;
+}
+
+.linkIcon {
+  font-size: 0.8em;
+  margin-left: 5px;
+}
