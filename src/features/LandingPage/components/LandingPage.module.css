@@ -1,0 +1,19 @@
+.title {
+  margin: 0;
+  padding: 50px;
+  color: white;
+  background-color: mediumblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.body {
+  position: sticky;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

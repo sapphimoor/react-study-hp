@@ -1,7 +1,7 @@
-import { DocumentPage } from "@/features/DocumentPage";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { DocumentPage } from "@/features/DocumentPage"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 
-const basename = import.meta.env.DEV ? "/" : "/react-study-hp/";
+const basename = import.meta.env.DEV ? "/" : "/react-study-hp/"
 
 export const App = () => {
   return (
