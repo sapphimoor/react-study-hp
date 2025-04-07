@@ -1,51 +1,71 @@
+import { ContentUtils } from "@/features/Content/utils/ContentUtils"
+import { useNavigate } from "react-router-dom"
 import styles from "./LandingPage.module.css"
 
-import { CodeBlock } from "@/features/CodeBlock"
-
 export const LandingPage = () => {
-  return (
-    <div>
-      <h1 className={styles.title}>React のきほん</h1>
-      <div className={styles.body}>
-        <h2>React ってなに？</h2>
-        <p>
-          <a href={"https://ja.react.dev/"}>React</a> は Meta が開発した
-          JavaScript ライブラリです。 React を使うことで Web
-          アプリケーションを効率的に開発することができます。 特に、React
-          はコンポーネント指向の開発が得意です。
-          これによりアプリケーションを小さな部品に分割して開発することができ、メンテナンス性や再利用性が向上します。
-          <CodeBlock
-            code={`
-const HelloWorld = () => {
-  return <div>Hello, React!</div>
-}
+  const navigate = useNavigate()
 
-const App = () => {
   return (
     <div>
-      <HelloWorld />
-      <HelloWorld />
-    </div>
-  )
-}
-          `}
-            language={"tsx"}
-          />
-        </p>
-        <p>
-          近年では React は企業からも注目されており、Web
-          アプリケーションのフロントエンド開発の主流となっています。
-        </p>
-        <h2>初心者から中級者まで</h2>
-        <p>
-          このサイトでは React の基本から応用まで学ぶことができます。 初めて
-          React を学ぶ方は React
-          に使用する技術をハンズオン形式で学ぶことができます。 既に React
-          を使ったことがある方は、環境作成の際の細かい設定など、リファレンスや備忘録のような形で活用できます。
-          さらにチーム開発の際の Tips など、実践的な内容も取り扱っています。
-          <br />
-          ぜひ日々の React ライフのお供としてご活用ください。
-        </p>
+      <h1 className={styles.title}>React おたすけ本</h1>
+      <div className={styles.body}>
+        <div className={styles.container}>
+          <h2>React の学習</h2>
+          <p>
+            React 初学者向けの学習コンテンツを提供しています。 React
+            の周辺知識や、実際の開発で役立つ Tips
+            なども併せて学ぶことができます。
+            すべてハンズオン形式のため、経験を積みながら React
+            を身につけることができます。
+            <p
+              className={styles.learnMore}
+              onClick={() => {
+                navigate(ContentUtils.makeUrlParams("Lesson"))
+              }}
+            >
+              Learn More
+            </p>
+          </p>
+        </div>
+        <div className={styles.container}>
+          <h2>React リファレンス</h2>
+          <p>
+            環境作成の際の細かい設定など、リファレンスや備忘録のような形で活用することができます。
+            将来的には辞書式にすることで、自分の知りたい情報が書いてある場所まで見出しから飛べるようにする予定です。
+            <p
+              className={styles.comingSoon}
+              // onClick={() => {
+              //   window.open(
+              //     "https://github.com/sapphimoor/react-study-hp",
+              //     "_blank"
+              //   )
+              // }}
+            >
+              Coming soon...
+            </p>
+          </p>
+        </div>
+        <div className={styles.container}>
+          <h2>React を用いた実例</h2>
+          <p>
+            このサイトは React を用いて開発されています。
+            このサイトで学習できる内容を使用しながら一から開発しています。
+            どのように作られているか分かるようにソースコードも公開しています。
+            React で作られた web ページの一例としてご活用ください。
+            <br />
+            <p
+              className={styles.learnMore}
+              onClick={() => {
+                window.open(
+                  "https://github.com/sapphimoor/react-study-hp",
+                  "_blank"
+                )
+              }}
+            >
+              Learn More
+            </p>
+          </p>
+        </div>
       </div>
     </div>
   )

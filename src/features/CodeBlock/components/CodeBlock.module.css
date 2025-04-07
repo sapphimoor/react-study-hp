@@ -9,10 +9,6 @@
   overflow: auto;
 }
 
-.lineNumber {
-  margin-right: 20px;
-}
-
 .copyContainer {
   position: absolute;
   top: 10px;

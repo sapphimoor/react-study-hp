@@ -15,15 +15,13 @@ export const Content = () => {
       <aside className={styles.index}>
         <div className={styles.indexContainer}>
           {headings.map((heading, index) => (
-            <ul
+            <div
               key={index}
               className={styles.indexItem}
-              style={{ paddingLeft: `${heading.level}rem` }}
+              style={{ paddingLeft: `${heading.level - 1}rem` }}
             >
-              <li>
-                <a href={`#${heading.id}`}>{heading.text}</a>
-              </li>
-            </ul>
+              <a href={`#${heading.id}`}>{heading.text}</a>
+            </div>
           ))}
         </div>
       </aside>

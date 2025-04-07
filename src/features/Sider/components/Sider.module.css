@@ -56,12 +56,12 @@
 }
 
 .selected {
-  color: mediumblue;
+  color: #5195e1;
   background-color: rgba(0, 0, 0, 0.1);
 }
 
 .selectedDescendant {
-  color: mediumblue;
+  color: #5195e1;
 }
 
 .siderItem {

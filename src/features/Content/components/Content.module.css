@@ -35,35 +35,13 @@
 }
 
 .indexContainer {
-  padding: 10px;
-  font-size: 1.2em;
+  padding: 10px 0 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: medium;
 }
 
 .indexItem {
-  margin: 0;
   word-break: break-all;
-}
-
-.indexItem0 {
-  padding-left: 1rem;
-}
-
-.indexItem1 {
-  padding-left: 2rem;
-}
-
-.indexItem2 {
-  padding-left: 3rem;
-}
-
-.indexItem3 {
-  padding-left: 4rem;
-}
-
-.indexItem4 {
-  padding-left: 5rem;
-}
-
-.indexItem5 {
-  padding-left: 6rem;
 }

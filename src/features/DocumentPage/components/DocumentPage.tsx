@@ -34,7 +34,7 @@ export const DocumentPage = () => {
         )}
       </main>
       <footer className={styles.footer}>
-        <div>Copyright © 2024 T.T. Everything is handmade.</div>
+        <div>Copyright © 2025 T.T. Everything is handmade.</div>
         <div>MIT LICENSE</div>
       </footer>
     </div>

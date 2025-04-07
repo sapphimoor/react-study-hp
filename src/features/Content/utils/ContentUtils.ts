@@ -24,7 +24,7 @@ export class ContentUtils {
       if (!React.isValidElement(child)) return child
 
       const tag = child.type
-      if (typeof tag === "string" && /^h[1-6]$/.test(tag)) {
+      if (typeof tag === "string" && /^h[2-6]$/.test(tag)) {
         const text = child.props.children as string
         const duplicateCount = headings.filter(
           (heading) =>

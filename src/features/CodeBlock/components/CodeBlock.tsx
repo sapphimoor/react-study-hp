@@ -11,6 +11,7 @@ export interface CodeBlockProps {
 
 export const CodeBlock = (props: CodeBlockProps) => {
   const { code } = props
+  const digits = code.split("\n").length.toString().length
   const [copied, setCopied] = useState(false)
 
   const handleCopy = () => {
@@ -26,7 +27,13 @@ export const CodeBlock = (props: CodeBlockProps) => {
           <pre style={style} className={styles.content}>
             {tokens.map((line, i) => (
               <div key={i} {...getLineProps({ line })}>
-                <span className={styles.lineNumber}>{i + 1}</span>
+                <span
+                  style={{
+                    marginRight: `calc(20px + ${digits - (i + 1).toString().length}ch)`,
+                  }}
+                >
+                  {i + 1}
+                </span>
                 {line.map((token, key) => (
                   <span key={key} {...getTokenProps({ token })} />
                 ))}
@@ -37,7 +44,7 @@ export const CodeBlock = (props: CodeBlockProps) => {
       </Highlight>
       <div className={styles.copyContainer}>
         <button onClick={handleCopy}>
-          <Copy size={16} color="mediumblue" />
+          <Copy size={16} color="#5195E1" />
         </button>
 
         {/* コピー完了メッセージ */}
