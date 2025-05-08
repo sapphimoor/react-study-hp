@@ -25,6 +25,8 @@ export class ContentUtils {
 
       const tag = child.type
       if (typeof tag === "string" && /^h[2-6]$/.test(tag)) {
+        if (child.props["data-nosider"]) return child
+
         const text = child.props.children as string
         const duplicateCount = headings.filter(
           (heading) =>
