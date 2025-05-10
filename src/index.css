@@ -10,6 +10,13 @@ img {
   -webkit-user-drag: none;
 }
 
+code {
+  background: #5195e120;
+  margin: 0 3px;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
 blockquote {
   background: #5195e120;
   padding: 10px;

@@ -7,10 +7,11 @@ import { useState } from "react"
 export interface CodeBlockProps {
   code: string
   language: string
+  headSymbol?: "lineNum" | "$" | "none"
 }
 
 export const CodeBlock = (props: CodeBlockProps) => {
-  const { code } = props
+  const { code, headSymbol = "lineNum" } = props
   const digits = code.split("\n").length.toString().length
   const [copied, setCopied] = useState(false)
 
@@ -27,13 +28,19 @@ export const CodeBlock = (props: CodeBlockProps) => {
           <pre style={style} className={styles.content}>
             {tokens.map((line, i) => (
               <div key={i} {...getLineProps({ line })}>
-                <span
-                  style={{
-                    marginRight: `calc(20px + ${digits - (i + 1).toString().length}ch)`,
-                  }}
-                >
-                  {i + 1}
-                </span>
+                {headSymbol === "lineNum" ? (
+                  <span
+                    style={{
+                      marginRight: `calc(20px + ${digits - (i + 1).toString().length}ch)`,
+                    }}
+                  >
+                    {i + 1}
+                  </span>
+                ) : (
+                  headSymbol !== "none" && (
+                    <span style={{ marginRight: "10px" }}>{headSymbol}</span>
+                  )
+                )}
                 {line.map((token, key) => (
                   <span key={key} {...getTokenProps({ token })} />
                 ))}
@@ -43,12 +50,12 @@ export const CodeBlock = (props: CodeBlockProps) => {
         )}
       </Highlight>
       <div className={styles.copyContainer}>
+        {/* コピー完了メッセージ */}
+        {copied && <div className={styles.copyText}>Copied!</div>}
+
         <button onClick={handleCopy}>
           <Copy size={16} color="#5195E1" />
         </button>
-
-        {/* コピー完了メッセージ */}
-        {copied && <div className={styles.copyText}>Copied!</div>}
       </div>
     </div>
   )
