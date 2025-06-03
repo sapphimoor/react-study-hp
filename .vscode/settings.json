@@ -1,18 +1,28 @@
 {
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2,
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2,
-  },
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2,
-  },
+    // ファイル保存時の設定
+    "editor.codeActionsOnSave": {
+        // eslintによるfix処理を行う
+        "source.fixAll.eslint": "explicit",
+        // importの整理を行う
+        "source.organizeImports": "explicit",
+    },
+    // tsファイルについての設定
+    "[typescript]": {
+        // フォーマッタのデフォルトをPrettierにする
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    // tsxファイルについての設定
+    "[typescriptreact]": {
+        // フォーマッタのデフォルトをPrettierにする
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    // jsonファイルについての設定
+    "[json]": {
+        // タブサイズを2に設定する
+        "editor.tabSize": 2,
+    },
+    // ファイル保存時に自動的にフォーマットする
+    "editor.formatOnSave": true,
+    // デフォルトのCSSのLintを止めて、StylelintによるLintを行うための設定
+    "css.validate": false,
 }

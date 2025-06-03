@@ -10,8 +10,17 @@ export const MakeEnvironment = () => {
         <a href="#使用技術・ツールについて">使用技術・ツールについて</a>
         のセクションでまとめて解説します。
       </p>
+      <p>
+        また 2 度目以降の環境構築時や既に npm や VSCode
+        がインストールされている環境では
+        <a href="#npm をインストールする">npm をインストールする</a>および
+        <a href="VSCode をインストールする">VSCode をインストールする</a>
+        のセクションの手順は不要です。 これらの手順以外を実行してください。
+      </p>
 
-      <h2>npm をインストールする</h2>
+      <h2>環境作成手順</h2>
+
+      <h3>npm をインストールする</h3>
       <p>
         Windows の場合は <a href="https://nodejs.org/ja">Node.js</a>
         をインストールしてください。
@@ -29,7 +38,7 @@ export const MakeEnvironment = () => {
         を参照してください。
       </p>
 
-      <h2>Vite プロジェクトを作成する</h2>
+      <h3>Vite プロジェクトを作成する</h3>
       <p>
         Vite を使用してプロジェクトを作成します。
         コマンドプロンプトを開いて以下のコマンドを実行してください。
@@ -88,6 +97,335 @@ npm run dev`}
       <p>
         開発サーバを終了したい場合は同コマンドプロンプト上で<code>q</code>
         を入力して Enter を押してください。
+      </p>
+
+      <h3>VSCode をインストールする</h3>
+      <p>
+        <a href="https://code.visualstudio.com/Download">VSCode の公式サイト</a>
+        からインストーラをダウンロードして実行してください。
+      </p>
+      <p>
+        インストールが完了したら VSCode を起動してください。 VSCode
+        のターミナルを開いて以下のコマンドを実行してください。 ターミナルは
+        <code>Ctrl+@</code>で開けます。
+      </p>
+      <CodeBlock code={"npm -v"} language={"bash"} headSymbol={"$"} />
+      <p>
+        バージョンが表示されたらインストールは成功です。
+        バージョンが表示されず以下のようなエラーが生じた場合は次のセクションを参照ください。
+      </p>
+      <CodeBlock
+        code={
+          "このシステムではスクリプトの実行が無効になっているため、*****ファイルを読み込むことができません。"
+        }
+        language={"text"}
+        headSymbol={"none"}
+      />
+      <br />
+
+      <h4>VSCode で npm が実行できないとき</h4>
+      <p>
+        VSCode のターミナルで npm
+        が実行できない場合は以下の手順を試してください。
+      </p>
+      <ol>
+        <li>VSCode を起動します</li>
+        <li>
+          コマンドパレットを開き
+          <code>Preferences: Open User Settings (JSON)</code>を実行します
+        </li>
+        <ul>
+          <li>
+            コマンドパレットは<code>Ctrl+Shift+P</code>で開けます
+          </li>
+        </ul>
+        <li>開いたファイルに以下を追記して保存します</li>
+        <ul>
+          <li>
+            追記前の末尾にカンマがない場合は、カンマを追加してから追記してください
+          </li>
+          <li>
+            ファイル内に何も記述がない場合は、波かっこを記入してからその中に以下内容を記述してください
+          </li>
+        </ul>
+        <CodeBlock
+          code={`   "terminal.integrated.env.windows": {
+        "PSExecutionPolicyPreference": "RemoteSigned"
+    },`}
+          language={"json"}
+        />
+        <li>VSCode を再起動します</li>
+        <ul>
+          <li>
+            再起動は<code>Ctrl+Shift+P</code>でコマンドパレットを開き
+            <code>Developer: Reload Window</code>
+            を実行します
+          </li>
+        </ul>
+      </ol>
+      <p>
+        npm が実行できるようになったか確認するために再度 VSCode
+        のターミナルを開いて以下のコマンドを実行してください。
+      </p>
+      <CodeBlock code={"npm -v"} language={"bash"} headSymbol={"$"} />
+      <p>バージョンが表示されたら VSCode で npm を実行する準備は完了です。</p>
+
+      <h3>VSCode の環境設定をする</h3>
+      <p>VSCode の環境設定を行います。</p>
+      <ol>
+        <li>VSCode を起動します</li>
+        <li>
+          <a href="#Vite プロジェクトを作成する">Vite プロジェクトを作成する</a>
+          で作成したプロジェクトのディレクトリを開きます
+        </li>
+        <ul>
+          <li>
+            ディレクトリは<code>Ctrl+K Ctrl+O</code>で開けます
+          </li>
+        </ul>
+        <li>
+          開いたディレクトリ直下に <code>.vscode</code>
+          という名前のディレクトリを作成します
+        </li>
+        <li>
+          <code>.vscode</code>ディレクトリ以下に<code>settings.json</code>
+          という名前のファイルを作成し、以下を記述して保存します
+          <CodeBlock
+            code={`{
+  // ファイル保存時の設定
+  "editor.codeActionsOnSave": {
+    // eslintによるfix処理を行う
+    "source.fixAll.eslint": "explicit",
+    // importの整理を行う
+    "source.organizeImports": "explicit"
+  },
+  // tsファイルについての設定
+  "[typescript]": {
+    // フォーマッタのデフォルトをPrettierにする
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // tsxファイルについての設定
+  "[typescriptreact]": {
+    // フォーマッタのデフォルトをPrettierにする
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // jsonファイルについての設定
+  "[json]": {
+    // タブサイズを2に設定する
+    "editor.tabSize": 2
+  },
+  // ファイル保存時に自動的にフォーマットする
+  "editor.formatOnSave": true,
+  // デフォルトのCSSのLintを止めて、StylelintによるLintを行うための設定
+  "css.validate": false
+}`}
+            language={"json"}
+          />
+        </li>
+        <li>
+          <code>.vscode</code>ディレクトリ以下に
+          <code>extensions.json</code>
+          という名前のファイルを作成し、以下を記述して保存します
+          <CodeBlock
+            code={`{
+    "recommendations": [
+        "clinyong.vscode-css-modules",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ionutvmi.path-autocomplete",
+        "pucelle.vscode-css-navigation",
+        "stylelint.vscode-stylelint",
+    ]
+}`}
+            language={"json"}
+          />
+        </li>
+        <li>
+          コマンドパレットを開き<code>Developer: Reload Window</code>
+          を実行します
+          <ul>
+            <li>
+              コマンドパレットは<code>Ctrl+Shift+P</code>で開けます
+            </li>
+          </ul>
+        </li>
+        <li>
+          画面右下 に「拡張機能の推奨」が表示されるので、<code>Install</code>
+          をクリックして拡張機能をインストールします
+        </li>
+      </ol>
+      <p>
+        <code>src/App.tsx</code>を開いてファイルを保存すると import
+        文の順番が整理されていたりファイル内の様々な場所にセミコロンが挿入されたりしたら
+        VSCode の環境設定は成功です。
+      </p>
+
+      <h3>React のプロジェクト設定をする</h3>
+      <p>React のプロジェクト設定を行います。</p>
+      <ol>
+        <li>ターミナルで以下のコマンドを実行します</li>
+        <ul>
+          <li>
+            ターミナルは<code>Ctrl+@</code>で開けます
+          </li>
+        </ul>
+        <CodeBlock
+          code={`npm i -D prettier eslint-config-prettier vite-tsconfig-paths`}
+          language={"bash"}
+          headSymbol={"$"}
+        />
+        <li>
+          <code>eslint.config.js</code>の中身を以下で上書きして保存します
+        </li>
+        <CodeBlock
+          code={`import js from "@eslint/js"
+import eslintConfigPrettier from "eslint-config-prettier/flat"
+import react from "eslint-plugin-react"
+import reactHooks from "eslint-plugin-react-hooks"
+import reactRefresh from "eslint-plugin-react-refresh"
+import globals from "globals"
+import tseslint from "typescript-eslint"
+
+export default tseslint.config(
+  { ignores: ["dist"] },
+  {
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+      eslintConfigPrettier,
+    ],
+    files: ["**/*.{ts,tsx}"],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+    },
+    settings: { react: { version: "detect" } },
+    plugins: {
+      react,
+      "react-hooks": reactHooks,
+      "react-refresh": reactRefresh,
+    },
+    rules: {
+      ...react.configs.recommended.rules,
+      ...react.configs["jsx-runtime"].rules,
+      ...reactHooks.configs.recommended.rules,
+      "react-refresh/only-export-components": [
+        "warn",
+        { allowConstantExport: true },
+      ],
+    },
+  }
+)`}
+          language={"json"}
+        />
+        <li>
+          プロジェクトのルートディレクトリに<code>.prettierrc.json</code>
+          を作成し、以下を記述して保存します
+        </li>
+        <CodeBlock
+          code={`{
+  "printWidth": 80,
+  "tabWidth": 2,
+  "singleQuote": false,
+  "semi": false,
+  "trailingComma": "all"
+}`}
+          language={"json"}
+        />
+        <li>
+          プロジェクトのルートディレクトリに<code>.prettierignore</code>
+          を作成し、以下を記述して保存します
+        </li>
+        <CodeBlock
+          code={`# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Artifacts
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# JSON (Optional):
+*.json
+
+# Docs (Optional):
+*.md`}
+          language="text"
+        />
+        <li>
+          <code>tsconfig.app.json</code>の中身を以下で上書きして保存します
+        </li>
+        <CodeBlock
+          code={`{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+
+    /* Paths */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+    },
+  },
+  "include": ["src"]
+}`}
+          language={"json"}
+        />
+        <li>
+          <code>vite.config.ts</code>の中身を以下で上書きして保存します
+        </li>
+        <CodeBlock
+          code={`import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
+import tsconfigPaths from "vite-tsconfig-paths"
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react(), tsconfigPaths()],
+})`}
+          language={"ts"}
+        />
+      </ol>
+      <p>
+        <code>src/App.tsx</code>
+        を開いてファイルを保存するとファイル内の様々な場所にあったセミコロンがなくなったら
+        React のプロジェクト設定は成功です。
       </p>
 
       <h2>使用技術・ツールについて</h2>
@@ -204,10 +542,32 @@ npm uninstall <package-name>`}
       </p>
 
       <h3>TypeScript</h3>
+      <p>
+        TypeScript は JavaScript を拡張した言語です。
+        特に静的型付けが導入されているのが特徴です。
+        静的型解析とは、コンパイル時に型解析を行うことで実行時に発生する可能性のある型エラーを事前に検出することができる機能です。
+        これによりコードの可読性や保守性が向上し、バグの発生を減らすことができます。
+        さらにテキストエディタと連携することで、この型情報を利用してコード補完やリファクタリングなどの支援を受けることもできます。
+      </p>
+      <p>
+        一方で JavaScript
+        は動的型付けであり、実行時に型が変更される可能性があります。
+        そのため実行時に実装者が意図しない型エラーが発生する可能性があります。
+        TypeScript を使用することで JavaScript
+        の欠点を補うことができるため、現在プロジェクトでは TypeScript
+        が使用されることが多くなっています。
+      </p>
+      <p></p>
 
       <h3>TSX</h3>
 
       <h3>Module CSS</h3>
+
+      <h3>VSCode</h3>
+
+      <h3>VSCode の環境設定について</h3>
+
+      <h3>React の環境設定について</h3>
     </div>
   )
 }
