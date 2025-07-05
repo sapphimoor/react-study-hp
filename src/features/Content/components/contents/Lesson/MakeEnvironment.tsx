@@ -17,9 +17,7 @@ export const MakeEnvironment = () => {
         <a href="VSCode をインストールする">VSCode をインストールする</a>
         のセクションの手順は不要です。 これらの手順以外を実行してください。
       </p>
-
       <h2>環境作成手順</h2>
-
       <h3>npm をインストールする</h3>
       <p>
         Windows の場合は <a href="https://nodejs.org/ja">Node.js</a>
@@ -37,7 +35,6 @@ export const MakeEnvironment = () => {
         </a>
         を参照してください。
       </p>
-
       <h3>Vite プロジェクトを作成する</h3>
       <p>
         Vite を使用してプロジェクトを作成します。
@@ -98,7 +95,6 @@ npm run dev`}
         開発サーバを終了したい場合は同コマンドプロンプト上で<code>q</code>
         を入力して Enter を押してください。
       </p>
-
       <h3>VSCode をインストールする</h3>
       <p>
         <a href="https://code.visualstudio.com/Download">VSCode の公式サイト</a>
@@ -122,7 +118,6 @@ npm run dev`}
         headSymbol={"none"}
       />
       <br />
-
       <h4>VSCode で npm が実行できないとき</h4>
       <p>
         VSCode のターミナルで npm
@@ -169,7 +164,6 @@ npm run dev`}
       </p>
       <CodeBlock code={"npm -v"} language={"bash"} headSymbol={"$"} />
       <p>バージョンが表示されたら VSCode で npm を実行する準備は完了です。</p>
-
       <h3>VSCode の環境設定をする</h3>
       <p>VSCode の環境設定を行います。</p>
       <ol>
@@ -259,7 +253,6 @@ npm run dev`}
         文の順番が整理されていたりファイル内の様々な場所にセミコロンが挿入されたりしたら
         VSCode の環境設定は成功です。
       </p>
-
       <h3>React のプロジェクト設定をする</h3>
       <p>React のプロジェクト設定を行います。</p>
       <ol>
@@ -427,9 +420,7 @@ export default defineConfig({
         を開いてファイルを保存するとファイル内の様々な場所にあったセミコロンがなくなったら
         React のプロジェクト設定は成功です。
       </p>
-
       <h2>使用技術・ツールについて</h2>
-
       <h3>npm</h3>
       <p>
         npm (Node Package Manager) は Node.js
@@ -491,7 +482,6 @@ npm uninstall <package-name>`}
         つまり開発サーバを再度立ち上げる際は<code>npm run dev</code>
         を実行すれば良いということです。
       </p>
-
       <h3>Vite</h3>
       <p>
         Vite (/vit/) はフロントエンドの開発環境を構築するためのツールです。 Vite
@@ -540,7 +530,6 @@ npm uninstall <package-name>`}
         <a href="https://ja.vitejs.dev/guide/">公式ドキュメント</a>
         を参照してください。
       </p>
-
       <h3>TypeScript</h3>
       <p>
         TypeScript は JavaScript を拡張した言語です。
@@ -557,16 +546,138 @@ npm uninstall <package-name>`}
         の欠点を補うことができるため、現在プロジェクトでは TypeScript
         が使用されることが多くなっています。
       </p>
-      <p></p>
-
+      <p>
+        TypeScript の学習には
+        <a href="https://typescriptbook.jp/">サバイバルTypeScript</a>
+        がおすすめです。 中でもまずは
+        <a href="https://typescriptbook.jp/tutorials">作って学ぶTypeScript</a>
+        から始めてみて、 TypeScript のイメージを掴んだら
+        <a href="https://typescriptbook.jp/reference">読んで学ぶTypeScript</a>
+        を学習してみると良いと思います。
+        それぞれ注意点があるので次の節を参照ください。
+      </p>
+      <p>
+        <a href="https://typescriptbook.jp/tutorials">作って学ぶTypeScript</a>
+        では
+        <a href="https://typescriptbook.jp/tutorials/make-a-simple-function-via-cli">
+          簡単な関数を作ってみよう
+        </a>
+        および
+        <a href="https://typescriptbook.jp/tutorials/react-like-button-tutorial">
+          Reactでいいねボタンを作ろう
+        </a>
+        だけ実施してみてください。 特に前者の
+        <a href="https://typescriptbook.jp/tutorials/make-a-simple-function-via-cli">
+          簡単な関数を作ってみよう
+        </a>
+        に関しては先ほど作成した環境の上で実施できるので、サイト内の誘導にある「開発環境の準備」は実施しなくて大丈夫です。
+        ただし<code>tsc</code>を実行する場所のみ<code>npx tsc</code>
+        と読み替えてください。
+      </p>
+      <p>
+        <a href="https://typescriptbook.jp/reference">読んで学ぶTypeScript</a>
+        では主に
+        <a href="https://typescriptbook.jp/reference/object-oriented">
+          オブジェクト指向
+        </a>
+        の節までを学習しておくと良いです。
+        ただし分量が多く途中で飽きてしまう可能性もあるため、ざっと目を通してどんな書き方があるかをとりあえず把握する程度でも問題ありません。
+        読んでいる途中で気になること・試したいことがあったらぜひ作成した環境上で実際にコードを書いて試してみてください。
+        TypeScript をコンパイルしたりコンパイルした JavaScript
+        ファイルを実行したりするのが面倒くさいという場合は
+        <a href="https://paiza.io/ja">paiza.io</a>もおすすめです。
+        このサイトでは Web
+        上でいろいろな言語の実行環境を整えてくれており、TypeScript
+        も実行できます。
+      </p>
       <h3>TSX</h3>
+      <p>
+        TSX (TypeScript XML) は JSX に TypeScrpit
+        を書けるように拡張したものです。 React
+        コンポーネントを書きやすくしながら TypeScript
+        の恩恵も得られるため、基本的に React を記述する際は TSX
+        ファイルを作成します。
+      </p>
+      <h3>CSS Modules</h3>
+      <p>
+        CSS Modules は、CSS
+        をコンポーネントごとに分けて安全に使えるようにしたものです。 通常の CSS
+        ではクラス名がソーコード全体に影響しますが、CSS Modules
+        を使うと各ファイル固有になってくれます。
+      </p>
+      <p>
+        具体例で言うと、<code>hoge.css</code>と<code>huga.css</code>でそれぞれ
+        <code>title</code>というクラスを作成したとします。
+      </p>
+      <CodeBlock
+        code={`/* hoge.css */
+.title {
+  font-size: 20px;
+}`}
+        language={"css"}
+      />
+      <br />
+      <CodeBlock
+        code={`/* huga.css */
+.title {
+  font-weight: bold;
+  color: #5195e1;
+}`}
+        language={"css"}
+      />
+      <p>
+        この場合<code>font-size</code>
+        <code>font-weight</code>
+        <code>color</code>すべてを持った<code>title</code>というクラスが 1
+        つできることになります。
+      </p>
+      <CodeBlock
+        code={`.title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #5195e1;
+}`}
+        language={"css"}
+      />
+      <p>
+        一方、CSS Modules を使用し<code>hoge.module.css</code>と
+        <code>huga.module.css</code>を作成した場合はそれぞれ固有の
+        <code>title</code>クラスができます。
+      </p>
+      <p>
+        このようにクラス名を固有にするために冗長な名前を考えたり意図しない不具合を避けるためにクラス名を
+        Excel 等で管理する必要がなくなるため、CSS Modules
+        は有用な選択肢となります。
+      </p>
+      <p>
+        使い方は簡単です。 まずファイル名の拡張子を<code>.module.css</code>
+        とします。 クラス名はキャメルケース (camelCase) で記述します。
+        使用したい TSX ファイルから CSS ファイルをインポートします。
+        そして使用したい要素の className
+        プロパティに作成したクラスを指定します。
+      </p>
+      <CodeBlock
+        code={`/* hoge.module.css */
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #5195e1;
+}`}
+        language={"css"}
+      />
+      <br />
+      <CodeBlock
+        code={`// Hoge.tsx
+import styles from "hoge.module.css"
 
-      <h3>Module CSS</h3>
-
+const Hoge = () => {
+    return <div className={styles.title}>タイトル！</div>
+}`}
+        language={"ts"}
+      />
+      <br />
       <h3>VSCode</h3>
-
       <h3>VSCode の環境設定について</h3>
-
       <h3>React の環境設定について</h3>
     </div>
   )
