@@ -71,29 +71,28 @@ export const MakeEnvironment = () => {
             />
           </li>
         </ul>
+        <li>Install with npm and start now?</li>
+        <ul>
+          <li>
+            <CodeBlock code={"Yes"} language={"text"} headSymbol={"none"} />
+          </li>
+        </ul>
       </ul>
       <p>
-        これで Vite のプロジェクトが作成されたと思います。
-        続いて開発サーバを立ち上げるために以下のコマンドを実行してください。
-      </p>
-      <CodeBlock
-        code={`cd my-app
-npm install
-npm run dev`}
-        language={"bash"}
-        headSymbol={"$"}
-      />
-      <p>
+        これで Vite
+        のプロジェクトが作成され、同時に開発サーバが立ち上がっていると思います。
         <code>VITE vX.X.X ready in XXX ms</code>
         （X は任意の数字）
         のように表示されたら正しく開発サーバーが起動しています。 ブラウザで
         <a href="http://localhost:5173">http://localhost:5173</a>
-        にアクセスして画面に「Vite + React」
-        と表示されていれば環境の作成は成功です。
+        にアクセスして画面に「Get
+        started」と表示されていれば環境の作成は成功です。
       </p>
       <p>
         開発サーバを終了したい場合は同コマンドプロンプト上で<code>q</code>
         を入力して Enter を押してください。
+        もう一度開発サーバを立ち上げたい場合はコマンドプロンプト上で
+        <code>npm run dev</code>と実行してください。
       </p>
       <h3>VSCode をインストールする</h3>
       <p>
@@ -263,7 +262,7 @@ npm run dev`}
           </li>
         </ul>
         <CodeBlock
-          code={`npm i -D prettier eslint-config-prettier vite-tsconfig-paths`}
+          code={`npm i -D eslint-plugin-react prettier eslint-config-prettier vite-tsconfig-paths`}
           language={"bash"}
           headSymbol={"$"}
         />
@@ -373,6 +372,7 @@ dist-ssr
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
+    "types": ["vite/client"],
     "skipLibCheck": true,
 
     /* Bundler mode */
@@ -417,8 +417,9 @@ export default defineConfig({
       </ol>
       <p>
         <code>src/App.tsx</code>
-        を開いてファイルを保存するとファイル内の様々な場所にあったセミコロンがなくなったら
-        React のプロジェクト設定は成功です。
+        を開いてファイルを保存するとシングルクォーテーション<code>{"'"}</code>
+        がダブルクォーテーション<code>{'"'}</code>になったら React
+        のプロジェクト設定は成功です。
       </p>
       <h2>使用技術・ツールについて</h2>
       <h3>npm</h3>
@@ -449,18 +450,15 @@ npm uninstall <package-name>`}
         headSymbol={"$"}
       />
       <p>
-        <a href="#Vite プロジェクトを作成する">Vite プロジェクトを作成する</a>
-        のセクションでは<code>npm install</code>
-        というコマンドを実行しましたが、ここではパッケージ名が指定されていません。
-        パッケージ名を指定せずに実行すると package.json
+        パッケージ名が指定せず<code>npm install</code>
+        と実行すると package.json
         に記載されているパッケージすべてが自動でインストールされます。
         このコマンドはパッケージをインストールするだけなので、基本的には 1
         度実行すればそれ以降はもう実行する必要はありません。
       </p>
       <p>
         <a href="#Vite プロジェクトを作成する">Vite プロジェクトを作成する</a>
-        のセクションではもう 1 つ<code>npm run dev</code>
-        というコマンドを実行しましたが、こちらは開発サーバを立ち上げるためのコマンドです。
+        のセクションでは<code>npm run dev</code>というコマンドを紹介しました。
         <code>npm run</code>
         の後に続くコマンドは package.json
         に記載されているスクリプトを実行するためのコマンドです。 Vite
@@ -479,8 +477,6 @@ npm uninstall <package-name>`}
       <p>
         <code>npm run dev</code>を実行すると<code>vite</code>
         というコマンドが実行されて開発サーバが立ち上がるという仕組みです。
-        つまり開発サーバを再度立ち上げる際は<code>npm run dev</code>
-        を実行すれば良いということです。
       </p>
       <h3>Vite</h3>
       <p>
@@ -517,13 +513,7 @@ npm uninstall <package-name>`}
         ではなく TypeScript を使用することをオススメします。 TypeScript
         を使用することのメリットは後述の
         <a href="#TypeScript">TypeScript</a>
-        のセクションで詳しく説明します。 また SWC とは Rust で書かれた
-        JavaScript/TypeScript
-        のトランスパイラであり、コンパイル速度を劇的に向上させることができます。
-        しかし SWC はまだ開発中のため不安定な可能性があります。
-        またエコシステムがまだあまり整っていません。
-        これらが気になる場合は現時点では使用しないことをオススメします。 SWC
-        を使用しない場合は Babel というトランスパイラを使用することになります。
+        のセクションで詳しく説明します。
       </p>
       <p>
         Vite の詳細については
