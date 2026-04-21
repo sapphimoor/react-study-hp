@@ -2,7 +2,7 @@ import styles from "./CodeBlock.module.css"
 
 import { Copy } from "lucide-react"
 import { Highlight, themes } from "prism-react-renderer"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export interface CodeBlockProps {
   code: string
@@ -20,6 +20,20 @@ export const CodeBlock = (props: CodeBlockProps) => {
     setCopied(true)
     setTimeout(() => setCopied(false), 1500)
   }
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "c" && (event.ctrlKey || event.metaKey)) {
+        navigator.clipboard.writeText(code)
+        setCopied(true)
+        setTimeout(() => setCopied(false), 1500)
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown)
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [code])
 
   return (
     <div className={styles.container}>
